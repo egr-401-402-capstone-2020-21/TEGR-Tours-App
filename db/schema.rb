@@ -16,19 +16,23 @@ ActiveRecord::Schema.define(version: 2020_09_18_153859) do
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
+    t.bigint "room_id"
     t.string "title"
     t.string "code"
     t.string "instructor"
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_courses_on_room_id"
   end
 
   create_table "data", force: :cascade do |t|
+    t.bigint "room_id"
     t.string "title"
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_data_on_room_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -38,11 +42,13 @@ ActiveRecord::Schema.define(version: 2020_09_18_153859) do
   end
 
   create_table "time_blocks", force: :cascade do |t|
+    t.bigint "course_id"
     t.string "day_of_week"
     t.string "start_time"
     t.string "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_time_blocks_on_course_id"
   end
 
 end
