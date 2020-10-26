@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  week_day: MyString
+  start_time: MyString
+  end_time: MyString
+  course: one
+
+two:
+  week_day: MyString
+  start_time: MyString
+  end_time: MyString
+  course: two
