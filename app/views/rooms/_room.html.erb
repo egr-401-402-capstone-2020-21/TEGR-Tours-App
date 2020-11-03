@@ -1,13 +1,10 @@
-<div class="room border rounded">
-  <div class="thumbnail">
-    <div class="caption text-light p-2" data-id=<%= printer.id %>>
-      <h3><%= link_to printer.name, printer_path(printer), class: colorize(printer.status) %></h3>
-      <p>
-        <% if logged_in? %>
-          <%= link_to "Edit", edit_printer_path(printer), class: "btn btn-default border rounded text-warning p-0 px-2" %>
-          <%= link_to 'Delete', printer, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-danger p-1" %>
-        <%end%>
-      </p>
+<div class="room">
+  <%= link_to room do %>
+  <div class="compact">
+    <%= image_tag "door_icon.png", class: "room-image" %>
+    <div class="border border-light rounded">
+      <h3><%= room.name %></h3>
     </div>
   </div>
+  <%end%>
 </div>
