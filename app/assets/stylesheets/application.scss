@@ -20,6 +20,27 @@
   margin-right: -1px;
 }
 
+/**** WELCOME ****/
+
+.welcome-title {
+  text-align: center;
+}
+
+/**** ROOMS ****/
+rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.room {
+  width: 20%;
+  min-width: 200px;
+  margin-bottom: 40px;
+    margin-left: 5px;
+  text-align: center;
+}
+
 /*!
  * Bootswatch v4.5.3
  * Homepage: https://bootswatch.com
