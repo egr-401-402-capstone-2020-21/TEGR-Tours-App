@@ -37,6 +37,18 @@
   text-align: center;
 }
 
+.icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon-image {
+  margin-bottom: 40px;
+  margin-left: 5px;
+  width: 10vw;
+  height: auto;
+}
+
 /**** ROOMS ****/
 
 .rooms {
