@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TEGRTours</title>
+    <title>TEGR Tours</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="banner-image"></div>
+    <%= render 'partials/header' %>
+    <section class="container">
+      <%= yield %>
+    </section>
   </body>
 </html>
