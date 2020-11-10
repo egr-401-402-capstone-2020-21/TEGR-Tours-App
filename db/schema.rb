@@ -10,9 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 ActiveRecord::Schema.define(version: 2020_11_09_032214) do
 
   create_table "courses", force: :cascade do |t|
@@ -64,6 +61,4 @@ ActiveRecord::Schema.define(version: 2020_11_09_032214) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "courses", "rooms"
-  add_foreign_key "time_blocks", "courses"
 end
