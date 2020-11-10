@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
   # before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorized, only: [:new, :create]
+=======
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+>>>>>>> master
 
   # GET /users
   # GET /users.json
@@ -25,11 +29,25 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+<<<<<<< HEAD
     @user = User.create(user_params)
 
     session[:user_id] = @user.id
 
     redirect_to '/welcome'
+=======
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+>>>>>>> master
   end
 
   # PATCH/PUT /users/1
@@ -64,6 +82,10 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
+<<<<<<< HEAD
       params.require(:user).permit(:email, :password)
+=======
+      params.require(:user).permit(:email, :password_digest)
+>>>>>>> master
     end
 end
