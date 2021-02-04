@@ -15,8 +15,10 @@
   </head>
 
   <body>
-    <div class="banner-image"></div>
     <%= render 'partials/header' %>
+    <div class="banner-image">
+      <div class="mask-light"></div>
+    </div>
     <section class="container">
       <%= yield %>
     </section>
