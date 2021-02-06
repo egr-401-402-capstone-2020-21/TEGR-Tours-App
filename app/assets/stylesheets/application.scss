@@ -9,12 +9,32 @@
   }
 }
 
+/**** IMAGES ****/
+
+/*
+ TODO: Refactor all images thingies into one where image is given in html  
+*/
 .banner-image {
   background-image: image-url('CBU_EGR.jpg');
   width: 100%;
   height: 30vh;
   background-size: cover;
   background-position: center;
+}
+
+.map-image {
+  background-image: image-url('homepage/maps.jpg');
+  width: 100%;
+  height: 30vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-cover {
+  background-attachment: static;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .compact {
@@ -43,9 +63,7 @@
 }
 
 .icon-image {
-  margin-bottom: 40px;
-  margin-left: 5px;
-  width: 10vw;
+  width: 100px;
   height: auto;
 }
 
@@ -71,15 +89,22 @@
 }
 
 .mask-light {
+  position:absolute;
   height: 100%;
   width: 100%;
   background-color: #000;
   opacity: 0.4;
+
 }
 
 
-/**** BOOTSTRAP ****/
+/**** GENERAL ****/
 
 .bg-cbublue {
   background-color: #0f2542 !important;
+}
+
+.spacer {
+  height: 40px;
+  width: 100%;
 }

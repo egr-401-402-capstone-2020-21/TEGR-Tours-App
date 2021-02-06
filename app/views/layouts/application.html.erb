@@ -19,8 +19,11 @@
     <div class="banner-image">
       <div class="mask-light"></div>
     </div>
-    <section class="container">
+    <div class="spacer bg-dark"></div>
+
+    <div class="container-fluid">
       <%= yield %>
-    </section>
+      <%= render 'partials/footer' %>
+    </div>
   </body>
 </html>
