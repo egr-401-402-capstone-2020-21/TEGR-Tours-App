@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'static#welcome'
   resources :time_blocks
   resources :courses
