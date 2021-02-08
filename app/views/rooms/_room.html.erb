@@ -1,5 +1,5 @@
 <div class="room">
-	<%= link_to "#", data: { toggle: "modal", target: "#roomModal", code: room.name, title: room.title, description: room.description } do %>
+	<%= link_to "#", data: { toggle: "modal", target: "#roomModal", code: room.name, title: room.title, description: room.description, path: edit_room_path(room) } do %>
 		<div class="compact">
 			<%= image_tag "door.webp", class: "room-image" %>
 			<div class="border border-light rounded">
@@ -7,33 +7,4 @@
 			</div>
 		</div>
 	<%end%>
-</div>
-
-<div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="roomModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="roomModalLabel">New message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Description</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        <%= link_to 'Edit', edit_room_path(room), class:"btn btn-warning" %>
-      </div>
-    </div>
-  </div>
 </div>
