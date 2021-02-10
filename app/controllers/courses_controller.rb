@@ -39,9 +39,17 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @week = week_params
+
 
     respond_to do |format|
       if @course.save
+        @week.each do |day, value|
+          time_block = TimeBlock.new(time_block_params)
+          time_block.week_day = day
+          time_block.course_id = @course.id
+          time_block.save
+        end
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -84,5 +92,14 @@ class CoursesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def course_params
       params.require(:course).permit(:title, :course_id, :instructor, :description, :room_id)
+    end
+
+     # Only allow a list of trusted parameters through.
+    def time_block_params
+      params.require(:time_block).permit(:week_day, :start_time, :end_time, :course_id)
+    end
+
+    def week_params
+      params.require(:week).permit(:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday)
     end
 end
