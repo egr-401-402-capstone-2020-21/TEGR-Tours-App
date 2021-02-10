@@ -10,6 +10,20 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @week = {
+      "sunday" => [],
+      "monday" => [],
+      "tuesday" => [],
+      "wednesday" => [],
+      "thursday" => [],
+      "friday" => [],
+      "saturday" => []
+    }
+
+    @course.time_blocks.each do |block|
+      @week[block.week_day.downcase] << block
+    end
+
   end
 
   # GET /courses/new
