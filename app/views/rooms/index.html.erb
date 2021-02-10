@@ -9,7 +9,7 @@
 </div>
 
 <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="roomModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="roomModalLabel">Room Code</h5>
@@ -29,6 +29,7 @@
           </div>
         </form>
       </div>
+  	  <%= render 'schedule' %>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
         <%= link_to 'Edit', "#", class:"edit btn btn-warning" %>
@@ -38,3 +39,5 @@
 </div>
 
 <%= link_to 'New Room', new_room_path %>
+
+<% #render partial: 'schedule', locals: { time_blocks: @time_blocks } %>
