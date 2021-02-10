@@ -64,6 +64,18 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
+        @course.time_blocks.each do |block|     # Delete old time_blocks
+          block.destroy
+        end
+
+        @week = week_params
+        @week.each do |day, value|
+          time_block = TimeBlock.new(time_block_params)
+          time_block.week_day = day
+          time_block.course_id = @course.id
+          time_block.save
+        end
+
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else

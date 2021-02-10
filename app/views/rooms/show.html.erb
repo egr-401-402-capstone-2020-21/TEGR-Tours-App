@@ -1,20 +1,10 @@
-<div class="contaiiner">
+<div class="container">
 	<h1 class="text-center">
 		<%= @room.name %>
 	</h1>
 
-	<p>
-	  <strong>Title:</strong>
-	  <%= @room.title %>
-	</p>
-
-	<p>
-	  <strong>Description:</strong>
-	  <%= @room.description %>
-	</p>
-
-	<%= link_to 'Edit', edit_room_path(@room) %> |
-	<%= link_to 'Back', rooms_path %>
+	<h2><%= @room.title %></h2>
+	<p><%= @room.description %></p>
 
 	<h1 class="text-center">Schedule</h1>
 
@@ -82,4 +72,6 @@
 
 	  <div class="cover-layer"></div>
 	</div> <!-- .cd-schedule -->
+	<%= link_to 'Edit', edit_room_path(@room), class:"btn btn-primary" %> |
+	<%= link_to 'Back', rooms_path, class:"btn btn-primary" %>
 </div>
