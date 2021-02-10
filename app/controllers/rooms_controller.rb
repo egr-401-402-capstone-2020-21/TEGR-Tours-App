@@ -10,6 +10,23 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    courses = Course.where(room_id: @room.id).all
+    @week = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    }
+
+    courses.each do |course|
+      course.time_blocks.each do |block|
+        @week[block.week_day.downcase.to_sym] << [block, course]
+      end
+    end
+
   end
 
   # GET /rooms/new
