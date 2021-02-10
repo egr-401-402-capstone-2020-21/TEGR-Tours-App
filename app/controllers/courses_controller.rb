@@ -11,17 +11,17 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     @week = {
-      "sunday" => [],
-      "monday" => [],
-      "tuesday" => [],
-      "wednesday" => [],
-      "thursday" => [],
-      "friday" => [],
-      "saturday" => []
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
     }
 
     @course.time_blocks.each do |block|
-      @week[block.week_day.downcase] << block
+      @week[block.week_day.downcase.to_sym] << block
     end
 
   end
