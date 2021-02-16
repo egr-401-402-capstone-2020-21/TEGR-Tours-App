@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :displays
   root 'static#welcome'
   resources :time_blocks
   resources :courses
