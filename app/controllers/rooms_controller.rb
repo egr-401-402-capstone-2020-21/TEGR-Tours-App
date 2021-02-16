@@ -11,6 +11,23 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    courses = Course.where(room_id: @room.id).all
+    @week = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    }
+
+    courses.each do |course|
+      course.time_blocks.each do |block|
+        @week[block.week_day.downcase.to_sym] << [block, course]
+      end
+    end
+
   end
 
   # GET /rooms/new
@@ -37,7 +54,7 @@ class RoomsController < ApplicationController
           module_size: 6,
           standalone: true
         )
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -60,7 +77,7 @@ class RoomsController < ApplicationController
           module_size: 6,
           standalone: true
         )
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to rooms_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
