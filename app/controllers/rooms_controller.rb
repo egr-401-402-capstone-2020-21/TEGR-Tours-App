@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1.json
   def show
     courses = Course.where(room_id: @room.id).all
+    # TODO: Abstract to application controller
     @week = {
       sunday: [],
       monday: [],
@@ -45,6 +46,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
+        generate_qr
         format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
@@ -87,5 +89,19 @@ class RoomsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def room_params
       params.require(:room).permit(:name, :title, :description)
+    end
+
+    def generate_qr
+      qrcode = RQRCode::QRCode.new(TegrQR::DOMAIN + room_path(@room))
+
+      # NOTE: showing with default options specified explicitly
+      svg = qrcode.as_svg(
+        offset: 0,
+        color: '000',
+        shape_rendering: 'crispEdges',
+        module_size: 6,
+        standalone: true)
+
+      save_svg(svg, @room.id)
     end
 end
