@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
   # config.current_user_method(&:current_user)
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -23,7 +23,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
   config.authorize_with do
-    redirect_to main_app.root_path unless warden.user and warden.user.admin == true
+    redirect_to main_app.root_path unless warden.user.admin?
   end
   
   config.actions do
