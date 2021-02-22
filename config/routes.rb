@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  resources :displays
   root 'static#welcome'
   resources :time_blocks
   resources :courses

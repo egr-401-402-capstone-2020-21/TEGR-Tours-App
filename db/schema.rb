@@ -9,8 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 2021_02_09_002804) do
+ActiveRecord::Schema.define(version: 2021_02_16_023720) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -21,6 +20,13 @@ ActiveRecord::Schema.define(version: 2021_02_09_002804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_courses_on_room_id"
+  end
+
+  create_table "displays", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

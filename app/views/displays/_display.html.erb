@@ -1,0 +1,11 @@
+<div class="room">
+	<% #link_to room, data: { toggle: "modal", target: "#roomModal", code: room.name, title: room.title, description: room.description, path: edit_room_path(room) } do %>
+	<%= link_to display do %>
+		<div class="compact">
+			<%= image_tag "door.webp", class: "room-image" %>
+			<div class="row">
+			  <h3 class="col border border-light rounded"><%= display.title %></h3>
+			</div>
+		</div>
+	<%end%>
+</div>
