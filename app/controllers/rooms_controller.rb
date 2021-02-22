@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  require 'rqrcode'
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms
@@ -10,6 +11,23 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    courses = Course.where(room_id: @room.id).all
+    @week = {
+      sunday: [],
+      monday: [],
+      tuesday: [],
+      wednesday: [],
+      thursday: [],
+      friday: [],
+      saturday: []
+    }
+
+    courses.each do |course|
+      course.time_blocks.each do |block|
+        @week[block.week_day.downcase.to_sym] << [block, course]
+      end
+    end
+
   end
 
   # GET /rooms/new
@@ -24,11 +42,19 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
+    s = 'http://10.147.19.131:3201/rooms/'
     @room = Room.new(room_params)
-
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        qrcode = RQRCode::QRCode.new(s + @room.slug + '/')
+        svg = qrcode.as_svg(
+          offset: 0,
+          color: '000',
+          shape_rendering: 'crispEdges',
+          module_size: 6,
+          standalone: true
+        )
+        format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -40,9 +66,18 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
+    s = 'http://10.147.19.131:3201/rooms/'
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        qrcode = RQRCode::QRCode.new(s + @room.slug + '/')
+        svg = qrcode.as_svg(
+          offset: 0,
+          color: '000',
+          shape_rendering: 'crispEdges',
+          module_size: 6,
+          standalone: true
+        )
+        format.html { redirect_to rooms_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }

@@ -11,22 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class:"text-light" %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, class:"text-light" %>
+    <%= form.text_field :title, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <%= form.label :description, class:"text-light" %>
+    <%= form.text_area :description, class:"form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= link_to 'Cancel', rooms_path, class:"btn btn-danger" %>
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>
