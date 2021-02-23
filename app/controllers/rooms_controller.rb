@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1.json
   def show
     courses = Course.where(room_id: @room.id).all
+    # TODO: Abstract to application controller
     @week = {
       sunday: [],
       monday: [],
@@ -42,18 +43,11 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    s = 'http://10.147.19.131:3201/rooms/'
     @room = Room.new(room_params)
+
     respond_to do |format|
       if @room.save
-        qrcode = RQRCode::QRCode.new(s + @room.slug + '/')
-        svg = qrcode.as_svg(
-          offset: 0,
-          color: '000',
-          shape_rendering: 'crispEdges',
-          module_size: 6,
-          standalone: true
-        )
+        generate_qr
         format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
@@ -66,17 +60,8 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
-    s = 'http://10.147.19.131:3201/rooms/'
     respond_to do |format|
       if @room.update(room_params)
-        qrcode = RQRCode::QRCode.new(s + @room.slug + '/')
-        svg = qrcode.as_svg(
-          offset: 0,
-          color: '000',
-          shape_rendering: 'crispEdges',
-          module_size: 6,
-          standalone: true
-        )
         format.html { redirect_to rooms_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
@@ -105,5 +90,19 @@ class RoomsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def room_params
       params.require(:room).permit(:name, :title, :description)
+    end
+
+    def generate_qr
+      qrcode = RQRCode::QRCode.new(TegrQR::DOMAIN + room_path(@room))
+
+      # NOTE: showing with default options specified explicitly
+      svg = qrcode.as_svg(
+        offset: 0,
+        color: '000',
+        shape_rendering: 'crispEdges',
+        module_size: 6,
+        standalone: true)
+
+      save_svg(svg, @room.id)
     end
 end

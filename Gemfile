@@ -21,10 +21,6 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-gem 'devise'
-gem 'cancan'
-gem 'rqrcode'
-
 gem 'rails_admin'
 #gem 'rails_admin_import'
 
@@ -43,6 +39,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 gem 'friendly_id', '~> 5.4.0'
+gem "cancancan", "~> 3.2"
+# gem for QR code generation
+gem "rqrcode", "1.2.0"
+gem 'devise'
+gem 'cancan'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -74,4 +75,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "cancancan", "~> 3.2"
