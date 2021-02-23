@@ -5,11 +5,12 @@ class Room < ApplicationRecord
 	validates :name, uniqueness: true
 	friendly_id :name, use: :slugged
 
-
 	after_create :generate_qr_code
+	after_destroy :destroy_qr_code
+
 	def generate_qr_code
+		Rails.logger.info "*** Attempting to generate qr code ***"
 		qrcode = RQRCode::QRCode.new(TegrQR::DOMAIN + room_path(self))
-		Rails.logger.info "*** Generate QR CODE ***"
 
 		# NOTE: showing with default options specified explicitly
 		svg = qrcode.as_svg(
@@ -19,6 +20,11 @@ class Room < ApplicationRecord
 			module_size: 6,
 			standalone: true)
 
-		save_svg(svg, "room", self.id)
+		save_svg(svg, self)
+	end
+
+
+	def destroy_qr_code
+		delete_svg(self)
 	end
 end
