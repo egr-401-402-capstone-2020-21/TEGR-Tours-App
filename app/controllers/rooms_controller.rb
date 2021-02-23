@@ -34,6 +34,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    Rails.logger.info "***\n\n\n\n\nGenerate QR CODE\n\n\n\n\n***"
   end
 
   # GET /rooms/1/edit
@@ -44,6 +45,7 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
+    Rails.logger.info "***\n\n\n\n\nGenerate QR CODE\n\n\n\n\n***"
 
     respond_to do |format|
       if @room.save
@@ -94,6 +96,7 @@ class RoomsController < ApplicationController
 
     def generate_qr
       qrcode = RQRCode::QRCode.new(TegrQR::DOMAIN + room_path(@room))
+      Rails.logger.info "*** Generate QR CODE ***"
 
       # NOTE: showing with default options specified explicitly
       svg = qrcode.as_svg(
