@@ -41,4 +41,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Room' do
+    create do
+      field :name
+      field :title
+      field :description
+      field :courses
+    end
+  end
 end
