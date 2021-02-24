@@ -5,7 +5,11 @@
 </div>
 
 <div class="rooms">
-  <%= render @rooms %>
+  <% unless @rooms.empty? %>
+    <%= render @rooms %>
+  <%else%>
+    <h1>Looks like there are no rooms yet...</h1>
+  <%end%>
 </div>
 
 <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="roomModalLabel" aria-hidden="true">
@@ -38,6 +42,8 @@
   </div>
 </div>
 
+<div class="push-footer"></div>
 <%= link_to 'New Room', new_room_path %>
+
 
 <% #render partial: 'schedule', locals: { time_blocks: @time_blocks } %>

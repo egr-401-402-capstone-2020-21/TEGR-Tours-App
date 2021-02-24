@@ -3,9 +3,14 @@
 </div>
 
 <div class="rooms">
-  <%= render @courses %>
+  <% unless @courses.empty? %>
+    <%= render @courses %>
+  <%else%>
+    <h1>Looks like there are no courses yet...</h1>
+  <%end%>
 </div>
 
 <br>
 
+<div class="push-footer"></div>
 <%= link_to 'New Course', new_course_path %>
