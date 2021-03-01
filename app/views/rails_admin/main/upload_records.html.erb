@@ -1,0 +1,14 @@
+<h1>HELLO ME!!!</h1>
+<%= link_to 'Download Current Schedule', dashboard_path, class: "btn btn-default border rounded text-light" %>
+
+<div>
+	<br>
+</div>
+<br>
+
+<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
+	<div class="form-group">
+		<%= f.file_field :config_file, id: "upload-field", class: "text-light" %>
+		<%= f.submit "Upload Schedule", class: "submit" %>
+	</div>
+<% end %>

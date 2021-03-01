@@ -33,7 +33,11 @@ en:
   hello: "Hello world"
   admin:
     actions:
-      settings:
-        title: Settings
-        breadcrumb: Settings
-        menu: Settings
+      BulkScheduleImport:
+        title: bulk_schedule_import
+        breadcrumb: bulk_schedule_import
+        menu: bulk_schedule_import
+      DownloadRecords:
+        title: download_records
+        breadcrumb: download_records
+        menu: download_records

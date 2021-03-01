@@ -1,3 +1,82 @@
+require 'rails_admin/config/actions'  
+require 'rails_admin/config/actions/base'
+
+module RailsAdminUploadRecordsAction; end
+
+module RailsAdmin  
+  module Config
+    module Actions
+      class BulkScheduleImport < RailsAdmin::Config::Actions::Base
+        RailsAdmin::Config::Actions.register(self)
+        register_instance_option :root? do
+          true
+        end
+
+        register_instance_option :visible? do
+          true
+        end
+
+        register_instance_option :http_methods do
+          [:get]
+        end
+
+        register_instance_option :controller do
+          proc do
+            if request.get?
+            end
+          end
+        end
+
+        register_instance_option :link_icon do
+          # font awesome icons. but an older version
+          'icon-envelope' 
+        end
+      end
+
+      class UploadRecords < RailsAdmin::Config::Actions::Base
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :root? do
+          true
+        end
+
+        register_instance_option :http_methods do
+          [:post]
+        end
+
+        register_instance_option :controller do
+          proc do
+            if request.post?
+            end
+          end
+        end
+
+      end
+
+      class DownloadRecords < RailsAdmin::Config::Actions::Base
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :root? do
+          true
+        end
+
+        register_instance_option :http_methods do
+          [:get]
+        end
+
+        register_instance_option :controller do
+          proc do
+            if request.get?
+            end
+          end
+        end
+      end
+
+    end
+  end
+end  
+
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -36,7 +115,12 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-    root :settings
+
+    bulk_schedule_import
+    upload_records
+    download_records
+
+
 
     ## With an audit adapter, you can add:
     # history_index
