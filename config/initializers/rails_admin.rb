@@ -22,8 +22,6 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            if request.get?
-            end
           end
         end
 
@@ -46,7 +44,10 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            if request.post?
+
+            uploaded_io = params[:config_file]
+            File.open(Rails.root.join('public', 'schedule', 'egr_schedule.xls'), 'wb') do |file|
+              file.write(uploaded_io.read)
             end
           end
         end
@@ -66,8 +67,7 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            if request.get?
-            end
+            send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
           end
         end
       end
