@@ -45,6 +45,7 @@ gem "rqrcode", "1.2.0"
 gem 'devise'
 gem 'cancan'
 
+gem 'spreadsheet'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
