@@ -1,14 +1,107 @@
-<h1>HELLO ME!!!</h1>
-<%= link_to 'Download Current Schedule', download_records_path, class: "btn btn-default border rounded text-light" %>
+<h1>Bulk Updates</h1>
 
-<div>
-	<br>
-</div>
-<br>
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th class="shrink download">Type</th>
+			<th class="shrink download">Download</th>
+			<th class="shrink upload">Upload</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="odd">
+			<td>
+				<span class="show">EGR Semester Schedule</span>
+			</td>
 
-<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
-	<div class="form-group">
-		<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
-		<%= f.submit "Upload Schedule", class: "submit" %>
-	</div>
-<% end %>
+			<td>
+				<%= link_to 'Download Current Schedule', download_records_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Schedule", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+
+		<tr class="even">
+			<td>
+				<span class="show">Rooms</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download Rooms', download_records_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Rooms", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+
+		<tr class="odd">
+			<td>
+				<span class="show">Courses</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download Courses', download_records_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Courses", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+
+		<tr class="even">
+			<td>
+				<span class="show">Display Cases</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download Display Cases', download_records_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Display Cases", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+
+		<tr class="odd">
+			<td>
+				<span class="show">Artifacts</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download Artifacts', download_records_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Artifacts", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>

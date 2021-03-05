@@ -33,11 +33,15 @@ en:
   hello: "Hello world"
   admin:
     actions:
-      BulkScheduleImport:
-        title: bulk_schedule_import
-        breadcrumb: bulk_schedule_import
-        menu: bulk_schedule_import
-      DownloadRecords:
-        title: download_records
-        breadcrumb: download_records
-        menu: download_records
+      bulk_schedule_import:
+        title: "Bulk Schedule Import"
+        breadcrumb: "Bulk Schedule Import"
+        menu: "Bulk Schedule Import"
+      download_records:
+        title: "Download Records"
+        breadcrumb: "Download Records"
+        menu: "Download Records"
+      upload_records:
+        title: "Upload Records"
+        breadcrumb: "Upload Records"
+        menu: "Upload Records"
