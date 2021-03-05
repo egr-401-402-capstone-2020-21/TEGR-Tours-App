@@ -1,4 +1,4 @@
-<h1>Bulk Updates</h1>
+<h1>Bulk Operations</h1>
 
 <table class="table table-condensed table-striped">
 	<thead>
@@ -11,18 +11,18 @@
 	<tbody>
 		<tr class="odd">
 			<td>
-				<span class="show">EGR Semester Schedule</span>
+				<span class="show">EGR Semester Master Spreadsheet</span>
 			</td>
 
 			<td>
-				<%= link_to 'Download Current Schedule', download_records_path, class: "btn btn-default border rounded text-light" %>
+				<%= link_to 'Download Current Sheet', download_records_path, class: "btn btn-default border rounded text-light" %>
 			</td>
 
 			<td>
 				<%= form_with url: upload_records_path, id: "upload-form" do |f| %>
 					<div class="form-group">
 						<%= f.file_field :schedule_sheet, id: "upload-field", class: "text-light" %>
-						<%= f.submit "Upload Schedule", class: "submit" %>
+						<%= f.submit "Upload Sheet", class: "submit" %>
 					</div>
 				<% end %>
 			</td>
@@ -101,6 +101,19 @@
 						<%= f.submit "Upload Artifacts", class: "submit" %>
 					</div>
 				<% end %>
+			</td>
+		</tr>
+
+		<tr class="even">
+			<td>
+				<span class="show">QR Codes</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download QR Codes', download_records_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
 			</td>
 		</tr>
 	</tbody>
