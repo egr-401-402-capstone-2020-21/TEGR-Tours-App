@@ -148,6 +148,29 @@ module RailsAdmin
           end
         end
       end
+
+      class DownloadQrCodes < CustomAction
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :visible? do
+          false
+        end
+
+        register_instance_option :show_in_navigation do
+          false
+        end
+
+        register_instance_option :http_methods do
+          [:get]
+        end
+
+        register_instance_option :controller do
+          proc do
+            #send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
+          end
+        end
+      end
+
     end
   end
 end  

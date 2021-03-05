@@ -45,3 +45,7 @@ en:
         title: "Upload Records"
         breadcrumb: "Upload Records"
         menu: "Upload Records"
+      download_qr_codes:
+        title: "Download QR Codes"
+        breadcrumb: Download QR Codes"
+        menu: "Download QR Codes"
