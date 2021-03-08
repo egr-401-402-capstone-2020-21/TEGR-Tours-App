@@ -34,9 +34,9 @@ en:
   admin:
     actions:
       bulk_schedule_import:
-        title: "Bulk Schedule Import"
-        breadcrumb: "Bulk Schedule Import"
-        menu: "Bulk Schedule Import"
+        title: "Bulk Operations"
+        breadcrumb: "Bulk Operations"
+        menu: "Bulk Operations"
       download_records:
         title: "Download Records"
         breadcrumb: "Download Records"

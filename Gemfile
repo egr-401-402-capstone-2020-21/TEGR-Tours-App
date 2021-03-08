@@ -46,6 +46,8 @@ gem 'devise'
 gem 'cancan'
 
 gem 'spreadsheet'
+gem 'rubyzip', '>= 1.0.0'
+gem 'zip-zip'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

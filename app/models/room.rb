@@ -12,16 +12,6 @@ class Room < ApplicationRecord
 		Rails.logger.info "*** Attempting to generate qr code ***"
 		qrcode = RQRCode::QRCode.new(TegrQR::DOMAIN + room_path(self))
 
-		# NOTE: showing with default options specified explicitly
-		#svg = qrcode.as_svg(
-		#	offset: 0,
-		#	color: '000',
-		#	shape_rendering: 'crispEdges',
-		#	module_size: 6,
-		#	standalone: true)
-
-		#save_svg(svg, self)
-
 		png = qrcode.as_png(
 		  bit_depth: 1,
 		  border_modules: 4,
