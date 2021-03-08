@@ -5,10 +5,9 @@
 
 	<h2><%= @room.title %></h2>
 	<p><%= @room.description %></p>
-	<%= render_svg(@room) %>
 
-	<h1 class="text-center">Schedule</h1>
-
+	<% if user_signed_in? %>
+	<h1 class="text-center">Schedule</h1>	
 	<div class="cd-schedule loading">
 	  <div class="timeline">
 	    <ul>
@@ -73,6 +72,7 @@
 
 	  <div class="cover-layer"></div>
 	</div> <!-- .cd-schedule -->
-	<%= link_to 'Edit', edit_room_path(@room), class:"btn btn-primary" %> |
+	<% end %>
 	<%= link_to 'Back', rooms_path, class:"btn btn-primary" %>
+	
 </div>
