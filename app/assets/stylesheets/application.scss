@@ -21,6 +21,25 @@
   background-position: center;
 }
 
+
+.map img{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mapButton button{
+  transform: rotate(270deg);
+  display:block;
+  background-color: #e7e7e7; color: black;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: 1325px;
+}
+
 .map-image {
   background-image: image-url('homepage/maps.jpg');
   width: 100%;

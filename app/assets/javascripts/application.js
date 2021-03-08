@@ -17,6 +17,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+//= require test.js
 
 
 $(document).on('turbolinks:load', function() {
