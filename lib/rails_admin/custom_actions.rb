@@ -1,7 +1,6 @@
 require 'rails_admin/config/actions'  
 require 'rails_admin/config/actions/base'
 
-#require 'spreadsheet'
 require 'time'
 require 'zip'
 
@@ -176,6 +175,8 @@ module RailsAdmin
 
             generate_rooms(egr_records)
             generate_courses(egr_records)
+
+            redirect_to dashboard_path
           end
         end
       end
@@ -198,54 +199,6 @@ module RailsAdmin
         register_instance_option :controller do
           proc do
             send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
-          end
-        end
-      end
-
-      class DownloadRooms < CustomAction
-        RailsAdmin::Config::Actions.register(self)
-
-        register_instance_option :visible? do
-          false
-        end
-
-        register_instance_option :show_in_navigation do
-          false
-        end
-
-        register_instance_option :http_methods do
-          [:get]
-        end
-
-        register_instance_option :controller do
-          proc do
-            #send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
-            zip_qr_codes
-            send_file File.join(Rails.root, 'public', 'qr_codes.zip')
-          end
-        end
-      end
-
-      class UploadRooms < CustomAction
-        RailsAdmin::Config::Actions.register(self)
-
-        register_instance_option :visible? do
-          false
-        end
-
-        register_instance_option :show_in_navigation do
-          false
-        end
-
-        register_instance_option :http_methods do
-          [:get]
-        end
-
-        register_instance_option :controller do
-          proc do
-            #send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
-            zip_qr_codes
-            send_file File.join(Rails.root, 'public', 'qr_codes.zip')
           end
         end
       end
