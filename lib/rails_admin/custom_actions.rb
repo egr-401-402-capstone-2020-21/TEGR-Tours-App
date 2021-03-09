@@ -21,21 +21,21 @@ module RailsAdmin
         h[:section] = row[2]
         h[:title] = row[3]
         h[:professor] = row[5]
-        d = Hash.new
+        d = []
         if row[9].include?('M')
-          d[:M] = true
+          d << :monday
         end
         if row[9].include?('T')
-          d[:T] = true
+          d << :tuesday
         end
         if row[9].include?('W')
-          d[:W] = true
+          d << :wednesday
         end
         if row[9].include?('R')
-          d[:R] = true
+          d << :thursday
         end
         if row[9].include?('F')
-          d[:F] = true
+          d << :friday
         end
         h[:days] = d
         # convert to military time
@@ -67,7 +67,12 @@ module RailsAdmin
 
     def generate_courses(data)
       data.each do |e|
-        Course.create(title: e[:title], course_id: e[:course_code], instructor: e[:professor], description: "", room_id: Room.friendly.find(e[:room].downcase.gsub(/ /, "-")).id).save
+        course = Course.create(title: e[:title], course_id: e[:course_code], instructor: e[:professor], description: "", room_id: Room.friendly.find(e[:room].downcase.gsub(/ /, "-")).id)
+        if course.save
+          e[:days].each do |day|
+            TimeBlock.create(week_day: day, start_time: e[:time][:start], end_time: e[:time][:finish], course_id: course.id)
+          end
+        end
       end
     end
 
@@ -166,11 +171,13 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
+            flash[:notice] = "File received!"
             uploaded_io = params[:schedule_sheet]
             File.open(Rails.root.join('public', 'schedule', 'egr_schedule.xls'), 'wb') do |file|
               file.write(uploaded_io.read)
             end
 
+            flash[:notice] = "Beginning import"
             egr_records = extract_schedule_data
 
             generate_rooms(egr_records)
