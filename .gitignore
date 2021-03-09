@@ -28,3 +28,5 @@
 
 /db/development.sqlite3
 sftp-config.json
+
+/app/assets/qr_codes/*
