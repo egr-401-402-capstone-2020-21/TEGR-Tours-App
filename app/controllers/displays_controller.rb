@@ -10,6 +10,7 @@ class DisplaysController < ApplicationController
   # GET /displays/1
   # GET /displays/1.json
   def show
+    @display = Display.friendly.find(params[:id])
   end
 
   # GET /displays/new
