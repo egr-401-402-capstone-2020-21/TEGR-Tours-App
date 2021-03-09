@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
     # TODO: Abstract to application controller
+    @course = Course.friendly.find(params[:id])
     @week = {
       sunday: [],
       monday: [],
