@@ -5,12 +5,17 @@
 
 	<h2><%= @room.title %></h2>
 	<p><%= @room.description %></p>
+	<%= render_svg(@room) %>
 
-	<% if user_signed_in? %>
-	<h1 class="text-center">Schedule</h1>	
+	<h1 class="text-center">Schedule</h1>
+
 	<div class="cd-schedule loading">
 	  <div class="timeline">
 	    <ul>
+		  <li><span>07:00</span></li>
+		  <li><span>07:30</span></li>
+		  <li><span>08:00</span></li>
+		  <li><span>08:30</span></li>
 	      <li><span>09:00</span></li>
 	      <li><span>09:30</span></li>
 	      <li><span>10:00</span></li>
@@ -52,27 +57,7 @@
 	    </ul>
 	  </div>
 
-	  <div class="event-modal">
-	    <header class="header">
-	      <div class="content">
-	        <span class="event-date"></span>
-	        <h3 class="event-name"></h3>
-	      </div>
-
-	      <div class="header-bg"></div>
-	    </header>
-
-	    <div class="body">
-	      <div class="event-info"></div>
-	      <div class="body-bg"></div>
-	    </div>
-
-	    <a href="#0" class="close">Close</a>
-	  </div>
-
 	  <div class="cover-layer"></div>
 	</div> <!-- .cd-schedule -->
-	<% end %>
 	<%= link_to 'Back', rooms_path, class:"btn btn-primary" %>
-	
 </div>
