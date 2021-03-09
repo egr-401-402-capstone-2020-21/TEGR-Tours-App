@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require test.js
+//= require map.js
 
 
 $(document).on('turbolinks:load', function() {
