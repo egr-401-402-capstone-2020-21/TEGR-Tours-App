@@ -47,7 +47,7 @@
 	            <% blocks.each do |course_block| %>
 	              <li class="single-event" data-start="<%= course_block[0].start_time %>" data-end="<%= course_block[0].end_time %>"  data-content="event-rowing-workout" data-event="event-2">
 	                <a href="#0">
-	                  <em class="event-name"><%= course_block[1].title %></em>
+	                  <em class="event-name"><% course_block[1].title %></em>
 	                </a>
 	              </li>
 	            <%end%>
