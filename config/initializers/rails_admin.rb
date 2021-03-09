@@ -58,4 +58,31 @@ RailsAdmin.config do |config|
       field :courses
     end
   end
+
+  config.model 'Course' do
+    create do
+      field :room
+      field :title
+      field :instructor
+      field :description
+    end
+  end
+
+  config.model 'Display' do
+    create do
+      field :title
+      field :description
+    end
+  end
+
+  config.model 'Artifact' do
+    create do
+      field :title
+      field :description
+    end
+  end
+
+  config.model 'TimeBlock' do
+    visible false
+  end
 end
