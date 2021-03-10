@@ -59,6 +59,52 @@ module RailsAdmin
       return data
     end
 
+    def import_updates
+      Spreadsheet.client_encoding = 'UTF-8'
+      book = Spreadsheet.open Rails.root.join('public', 'schedule', 'egr_records.xls')
+
+      sheet = book.worksheet 0
+      data = Array.new
+      sheet.each 1 do |row|
+        record_data = {}
+
+        record_data[:type] = row[0].classify.constantize
+        record_data[:room_code] = row[1]
+        record_data[:title] = row[2]
+        record_data[:desc] = row[3]
+
+        send("generate_" + row[0].downcase, record_data)
+      end
+    end
+
+    def generate_room(record_data)
+      # update if room exists
+      if Room.friendly.exists?(record_data[:room_code].gsub(/ /, "-")) 
+        Room.friendly.find(record_data[:room_code].gsub(/ /, "-")).update(name: record_data[:room_code], title: record_data[:title], description: record_data[:desc])
+      # create if not
+      else
+        Room.create(name: record_data[:room_code], title: record_data[:title], description: record_data[:desc]).save
+      end
+    end
+
+    def generate_display(record_data)
+      if Display.friendly.exists?(record_data[:title].gsub(/ /, "-")) 
+        Display.friendly.find(record_data[:title].gsub(/ /, "-")).update(title: record_data[:title], description: record_data[:desc])
+      # create if not
+      else
+        Display.create(title: record_data[:title], description: record_data[:desc]).save
+      end
+    end
+
+    def generate_artifact(record_data)
+      if Artifact.friendly.exists?(record_data[:title].gsub(/ /, "-")) 
+        Artifact.friendly.find(record_data[:title].gsub(/ /, "-")).update(title: record_data[:title], description: record_data[:desc])
+      # create if not
+      else
+        Artifact.create(title: record_data[:title], description: record_data[:desc]).save
+      end
+    end
+
     def generate_rooms(data)
       data.each do |e|
         Room.create(name: e[:room], title: "", description: "").save
@@ -206,6 +252,58 @@ module RailsAdmin
         register_instance_option :controller do
           proc do
             send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
+          end
+        end
+      end
+
+      class UploadUpdates < CustomAction
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :visible? do
+          false
+        end
+
+        register_instance_option :show_in_navigation do
+          false
+        end
+        
+        register_instance_option :http_methods do
+          [:post]
+        end
+
+        register_instance_option :controller do
+          proc do
+            flash[:notice] = "File received!"
+            uploaded_io = params[:update_sheet]
+            File.open(Rails.root.join('public', 'schedule', 'egr_records.xls'), 'wb') do |file|
+              file.write(uploaded_io.read)
+            end
+
+            flash[:notice] = "Beginning import"
+            egr_records = import_updates
+            redirect_to dashboard_path
+          end
+        end
+      end
+
+      class DownloadUpdateSheet < CustomAction
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :visible? do
+          false
+        end
+
+        register_instance_option :show_in_navigation do
+          false
+        end
+
+        register_instance_option :http_methods do
+          [:get]
+        end
+
+        register_instance_option :controller do
+          proc do
+            send_file File.join(Rails.root, 'public', 'schedule', 'egr_records.xls')
           end
         end
       end

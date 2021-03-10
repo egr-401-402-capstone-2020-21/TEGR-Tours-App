@@ -11,7 +11,7 @@
 	<tbody>
 		<tr class="odd">
 			<td>
-				<span class="show">EGR Semester Master Spreadsheet</span>
+				<span class="show">EGR Master Spreadsheet</span>
 			</td>
 
 			<td>
@@ -27,7 +27,27 @@
 				<% end %>
 			</td>
 		</tr>
+
 		<tr class="even">
+			<td>
+				<span class="show">Record Update Sheet</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download Update Sheet', download_update_sheet_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: upload_updates_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :update_sheet, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Sheet", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+
+		<tr class="odd">
 			<td>
 				<span class="show">QR Codes</span>
 			</td>

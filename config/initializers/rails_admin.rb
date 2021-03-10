@@ -43,6 +43,8 @@ RailsAdmin.config do |config|
     bulk_schedule_import
     upload_records
     download_records
+    upload_updates
+    download_update_sheet
     download_qr_codes
 
     ## With an audit adapter, you can add:
