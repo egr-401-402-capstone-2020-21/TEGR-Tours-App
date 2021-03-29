@@ -40,16 +40,13 @@ RailsAdmin.config do |config|
     delete
     show_in_app
 
+    # Custome Actions
     bulk_schedule_import
     upload_records
     download_records
     upload_updates
     download_update_sheet
     download_qr_codes
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
   end
 
   config.model 'Room' do
