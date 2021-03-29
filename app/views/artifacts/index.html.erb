@@ -1,27 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Artifacts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @artifacts.each do |artifact| %>
-      <tr>
-        <td><%= artifact.title %></td>
-        <td><%= artifact.description %></td>
-        <td><%= link_to 'Show', artifact %></td>
-        <td><%= link_to 'Edit', edit_artifact_path(artifact) %></td>
-        <td><%= link_to 'Destroy', artifact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="title-container">
+  <h1>Artifacts</h1>
+</div>
+  
+<div class="row">
+  <% unless @artifacts.empty? %>
+    <%= render @artifacts %>
+  <%else%>
+    <h1>Looks like there are no courses yet...</h1>
+  <%end%>
+</div>
 
 <br>
+
+<div class="push-footer"></div>
