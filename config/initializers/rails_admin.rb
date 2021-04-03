@@ -62,6 +62,7 @@ RailsAdmin.config do |config|
     create do
       field :room
       field :title
+      field :course_id
       field :instructor
       field :description
     end
