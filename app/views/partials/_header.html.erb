@@ -27,7 +27,16 @@
 
       <li class="nav-item">
         <% if current_user %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-success my-2 my-sm-0" %>
+        <div class="dropdown">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <%= current_user.email %>
+          </button>
+          <div class="dropdown-menu">
+            <% if current_user.admin %>
+              <%= link_to "Admin Panel", rails_admin_path, class: "dropdown-item" %>
+            <%end%>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
         <% else %>
           <%= link_to "Login", new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>
         <% end %>
