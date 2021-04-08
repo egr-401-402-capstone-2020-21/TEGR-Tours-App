@@ -85,4 +85,13 @@ RailsAdmin.config do |config|
   config.model 'TimeBlock' do
     visible false
   end
+
+  config.model 'User' do
+    create do
+      field :admin
+      field :email
+      field :password
+      field :password_confirmation
+    end
+  end
 end

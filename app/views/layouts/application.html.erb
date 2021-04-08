@@ -15,18 +15,13 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
     <%= render 'partials/header' %>
 
     <div class="banner-image text-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(<%= asset_path('CBU_EGR.jpg') %>">
       <h1>TEGR Tours</h1>
     </div>
 
-    <div class="spacer bg-dark"></div>
+    <div class="spacer"></div>
     <div class="container-fluid">
       <%= yield %>
       <%= render 'partials/footer' %>

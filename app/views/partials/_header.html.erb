@@ -25,10 +25,22 @@
         <%= link_to "Artifacts", artifacts_path, class: "nav-link compact" %>
       </li>
 
+      <li class="nav-item">
+        <% if current_user %>
+        <div class="dropdown">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <%= current_user.email %>
+          </button>
+          <div class="dropdown-menu">
+            <% if current_user.admin %>
+              <%= link_to "Admin Panel", rails_admin_path, class: "dropdown-item" %>
+            <%end%>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+        <% end %>
+      </li>
     </ul>
   </div>
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
 </nav>
