@@ -59,5 +59,24 @@
 			<td>
 			</td>
 		</tr>
+
+		<tr class="even">
+			<td>
+				<span class="show">Generate QR Code</span>
+			</td>
+
+			<td>
+				<%= link_to 'Download QR Code', download_qr_code_path, class: "btn btn-default border rounded text-light" %>
+			</td>
+
+			<td>
+				<%= form_with url: generate_qr_code_path, class: "form-inline" do |form| %>
+				  <%= form.label :URL, class:"sr-only", for: "urlForm" %>
+				  <%= form.text_field :URL, class:"form-control mb-2 mr-sm-2", id: "urlForm" %>
+
+				  <%= form.submit "create", class:"btn btn-primary" %>
+				<% end %>
+			</td>
+		</tr>
 	</tbody>
 </table>
