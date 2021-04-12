@@ -9,23 +9,26 @@ This web app is designed to interact with the QR codes placed around the CBU Col
 * Run ```gem install bundler```
 * Run ```bundle install``` to download/install all ruby gems from ```Gemfile``` for dependencies
 
-## Setting up the Database
+## Setting up the Database For Testing
 * Run ```rails db:migrate``` to create Database
 * Create a Rails Admin by running the following commands:
   - ```rails c```
-  - User.create(:admin => true,
+  - ```ruby
+  User.create(:admin => true,
 	:email => 'some_email@email.com',
     :password => 'abc123'
     :password_confirmation => 'abc123')
+    ```
 * Database is initialized through Admin page on website
-- Run ```rails s -b 0.0.0.0 -p <any_port>``` and go to 10.147.19.131/admin
+- Run ```rails s -b 0.0.0.0 -p 80``` and go to [localhost:80/admin](localhost:80/admin) ***NOTE: Mailer service runs on port 80 specifically, port 80 must be free for our website to send confirmation emails to users***
 * Upload ```EGR <Semester> Schedule```
 
 ## Testing
-* Test on 10.147.19.131 by running ```rails s -b 0.0.0.0 -p <any_port>```
-* QR Codes can be downloaded from ```10.147.19.131/admin/download_qr_codes```
+* Test on localhost by running ```rails s -b 0.0.0.0 -p 80```
+* QR Codes can be downloaded from [localhost:80/admin/download_qr_codes](localhost:80/admin/download_qr_codes)
 
 ## Deployment
+
 
 ## Submitting Code (Our Recomendation)
 ### 1. Create a Feature Branch
