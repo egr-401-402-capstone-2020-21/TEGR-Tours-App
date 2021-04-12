@@ -9,7 +9,7 @@ This web app is designed to interact with the QR codes placed around the CBU Col
 * Run ```gem install bundler```
 * Run ```bundle install``` to download/install all ruby gems from ```Gemfile``` for dependencies
 
-##Setting up the Database
+## Setting up the Database
 * Run ```rails db:migrate``` to create Database
 * Create a Rails Admin by running the following commands:
   - ```rails c```
@@ -21,13 +21,13 @@ This web app is designed to interact with the QR codes placed around the CBU Col
 - Run ```rails s -b 0.0.0.0 -p <any_port>``` and go to 10.147.19.131/admin
 * Upload ```EGR <Semester> Schedule```
 
-##Testing
+## Testing
 * Test on 10.147.19.131 by running ```rails s -b 0.0.0.0 -p <any_port>```
 * QR Codes can be downloaded from ```10.147.19.131/admin/download_qr_codes```
 
-##Deployment
+## Deployment
 
-##Submitting Code (Our Recomendation)
+## Submitting Code (Our Recomendation)
 ### 1. Create a Feature Branch
 A developer creates the feature in a dedicated branch in their local repo using
 
