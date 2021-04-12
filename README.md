@@ -13,10 +13,12 @@ This web app is designed to interact with the QR codes placed around the CBU Col
 * Run ```rails db:migrate``` to create Database
 * Create a Rails Admin by running the following commands:
   - ```rails c```
-  - ```User.create(:admin => true,
+  - ```
+  User.create(:admin => true,
 	     :email => 'some_email@email.com',
        :password => 'abc123'
-       :password_confirmation => 'abc123')```
+       :password_confirmation => 'abc123')
+       ```
 * Database is initialized through Admin page on website
 - Run ```rails s -b 0.0.0.0 -p <any_port>``` and go to 10.147.19.131/admin
 * Upload ```EGR <Semester> Schedule```
