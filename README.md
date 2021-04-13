@@ -5,7 +5,7 @@
 This web app is designed to interact with the QR codes placed around the CBU College of Engineering to provide a virtual tour of the building.
 
 ## Installation
-* Install Ruby v2.7
+* Install [Ruby v2.7](https://www.ruby-lang.org/en/)
 * `git clone https://github.com/egr-401-402-capstone-2020-21/TEGR-Tours-App.git`
 * Run `gem install bundler` within the directory associated with the git repository
 * Run `bundle install` to download/install all ruby gems from `Gemfile` for dependencies
