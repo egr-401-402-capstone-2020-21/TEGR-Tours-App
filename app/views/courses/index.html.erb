@@ -1,13 +1,10 @@
-<div class="title-container">
-  <h1>Courses</h1>
+<div class="container">
+	<h1 class="text-center">Courses</h1>
+	<div class="row">
+	  <% unless @courses.empty? %>
+	    <%= render @courses %>
+	  <%else%>
+	    <h1>Looks like there are no courses yet...</h1>
+	  <%end%>
+	</div>
 </div>
-  
-<div class="row">
-  <% unless @courses.empty? %>
-    <%= render @courses %>
-  <%else%>
-    <h1>Looks like there are no courses yet...</h1>
-  <%end%>
-</div>
-
-<br>
