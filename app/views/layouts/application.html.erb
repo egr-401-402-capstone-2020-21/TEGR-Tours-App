@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <div style="min-height:100vh">
+    <div class="pos">
       <%= render 'partials/header' %>
 
       <div class="banner-image text-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(<%= asset_path('CBU_EGR.jpg') %>">
@@ -31,8 +31,5 @@
     </div>
     
   </body>
-  
-  <footer class="container-fluid">
-    <%= render 'partials/footer' %>
-  </footer>
+  <%= render 'partials/footer' %>
 </html>

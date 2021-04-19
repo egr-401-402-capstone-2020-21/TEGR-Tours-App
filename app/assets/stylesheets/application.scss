@@ -115,9 +115,12 @@
   width: 100%;
 }
 
-.push-footer {
-  height: 40vh;
-  width: 100%;
+.pos {
+  min-height: 100vh;
+}
+
+.footer {
+  flex-shrink: 0;
 }
 
 .codyhouse {
