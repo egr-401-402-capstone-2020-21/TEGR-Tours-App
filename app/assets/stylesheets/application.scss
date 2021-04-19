@@ -85,6 +85,8 @@
 .tegr-icon-text {
   display: block;
   font-family: "Courier-new";
+  //word-break: break-all;
+  word-wrap: break-word;
 }
 
 .room-image {
