@@ -1,13 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @display.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @display.description %>
-</p>
-
-<%= link_to 'Back', displays_path %>
+<div class="container">
+	<h1 class="text-center">
+		<%= @display.title %>
+	</h1>
+	
+	<p><%= @display.description %></p>
+</div>

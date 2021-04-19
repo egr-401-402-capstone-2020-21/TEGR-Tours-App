@@ -1,14 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @artifact.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @artifact.description %>
-</p>
-
-<%= link_to 'Edit', edit_artifact_path(@artifact) %> |
-<%= link_to 'Back', artifacts_path %>
+<div class="container">
+	<h1 class="text-center">
+		<%= @artifact.title %>
+	</h1>
+	
+	<p><%= @artifact.description %></p>
+</div>
