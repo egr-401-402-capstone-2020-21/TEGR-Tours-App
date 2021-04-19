@@ -1,7 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
   	self.abstract_class = true
 	module TegrQR
-		DOMAIN = "http://10.147.19.131:3001"
+		DOMAIN = "http://tegrtours.com"
 		QR_PATH = "#{Rails.root}/app/assets/images/qr_codes"
 	end
 

@@ -68,18 +68,25 @@
 
 /**** ROOMS ****/
 
-.rooms {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.tegr-icon-container {
+  width: 200px;
+  display: inline-block;
+  padding: 20px;
+  text-align: center;
+  font-size: 40px;
+  vertical-align: middle;
 }
 
-.room {
-  width: 20%;
-  min-width: 200px;
-  margin-bottom: 40px;
-  margin-left: 5px;
-  text-align: center;
+.tegr-icon {
+  vertical-align: middle;
+  font-size: 40px;
+}
+
+.tegr-icon-text {
+  display: block;
+  font-family: "Courier-new";
+  //word-break: break-all;
+  word-wrap: break-word;
 }
 
 .room-image {
