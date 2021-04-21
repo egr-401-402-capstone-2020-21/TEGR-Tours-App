@@ -62,8 +62,7 @@
 }
 
 .icon-image {
-  width: 100px;
-  height: auto;
+  width: clamp(100px, 150px, 200px);
 }
 
 /**** ROOMS ****/
