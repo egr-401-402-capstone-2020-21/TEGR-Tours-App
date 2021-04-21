@@ -60,17 +60,17 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3204 }
-  config.action_mailer.default_options = { from: 'coetimeoff@calbaptist.edu' }
+  config.action_mailer.default_url_options = { host: 'http://tegrtours.com', port: 80 }
+  config.action_mailer.default_options = { from: 'tegrvirtualtours@gmail.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
-    :address => "smtp.office365.com",
+    :address => 'smtp.gmail.com',
     :port => 587,
-    :domain => "calbaptist.local",
-    :authentication => "login",
-    :user_name => "coetimeoff@calbaptist.edu",
-    :password => "c03time20!9"
+    :domain => 'mail.google.com',
+    :authentication => 'plain',
+    :user_name => ENV["EMAIL_USERNAME"],
+    :password => ENV["EMAIL_PASSWORD"]
   }
 end

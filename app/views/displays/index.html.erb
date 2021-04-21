@@ -1,6 +1,10 @@
 <div class="container">
 	<h1 class="text-center">Displays</h1>
 	<div class="row">
-	  <%= render @displays %>
+	  <% unless @displays.empty? %>
+	    <%= render @displays %>
+	  <%else%>
+	    <h1>Looks like there are no displays yet...</h1>
+	  <%end%>
 	</div>
 </div>

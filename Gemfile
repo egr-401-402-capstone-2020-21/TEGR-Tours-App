@@ -45,6 +45,16 @@ gem "rqrcode", "1.2.0"
 gem 'devise'
 gem 'cancan'
 
+# gems for Production on Docker
+gem 'unicorn'
+gem 'pg', '~> 1.2.2'
+gem 'sidekiq', '~> 6.0.4'
+gem 'redis-rails', '~> 5.0.2'
+
+gem 'sendgrid-ruby'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'figaro'
+
 gem 'spreadsheet'
 gem 'rubyzip', '>= 1.0.0'
 gem 'zip-zip'
