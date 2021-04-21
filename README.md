@@ -24,7 +24,24 @@ This web app is designed to interact with the QR codes placed around the CBU Col
 * QR Codes can be downloaded from [localhost:80/admin/download_qr_codes](localhost:80/admin/download_qr_codes)
 
 ## Deployment
-Deployment instructions at: [**sebas will give this to me so I need to update when he does**]()
+- Clone Github Repo to computer
+- To edit the docker files that build the docker image their paths are `/Dockerfile & /Dockerfile.nginx`
+	* **There are two docker files one for the actual Site and a second that handles the frontend(Nginx)**
+- To build the docker images type the following command: `docker build -f dockerfile/path -t <Dockername>/<tagname>`
+	* **-f allows you to specify the docker file that will be used to build the image. -t allows you to specify the Docker account to add the image to and the name of the image.**
+- To push docker image to docker hub repo type the following command: `docker push <Dockername>/<tagname>`
+- Log into the AWS Console and go to Lightsail.
+- Open the terminal associated to the TEGR-Site instance
+- Enter the following command to edit the Docker Compose file: `nano docker-compose.yml`
+	* **This file pulls the images that we created in step 3 & 4 and tells them how they will work together with the Postgres Database on the Lightsail Instance. Make sure the names used to build the docker images match the names used in the Compose file and are assigned to the right areas.**
+- Before you deploy the new image or redeploy the old one clear out the old version of the site. Type the following three commands to remove the old docker images. 
+```docker 
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker system prune -a
+```
+- Run the compose file and build the website by typing the following command: `docker-compose up`
+
 
 ## Submitting Code (Our Recomendation)
 ### 1. Create a Feature Branch
