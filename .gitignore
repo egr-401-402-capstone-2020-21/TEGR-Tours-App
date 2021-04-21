@@ -30,3 +30,6 @@
 sftp-config.json
 
 /app/assets/qr_codes/*
+
+# Ignore application configuration
+/config/application.yml

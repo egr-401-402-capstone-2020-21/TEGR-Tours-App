@@ -22,6 +22,10 @@
 
 
 $(document).on('turbolinks:load', function() {
+	$("#floor a").click(function(e){
+        e.preventDefault();
+        $(this).tab('show');
+    });
 	$('#roomModal').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
 	  var code = button.data('code') // Extract info from data-* attributes

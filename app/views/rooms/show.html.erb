@@ -5,63 +5,6 @@
 
 	<h2><%= @room.title %></h2>
 	<p><%= @room.description %></p>
-	<%= render_svg(@room) %>
 
-	<h1 class="text-center">Schedule</h1>
-
-	<div class="cd-schedule loading">
-	  <div class="timeline">
-	    <ul>
-		  <li><span>07:00</span></li>
-		  <li><span>07:30</span></li>
-		  <li><span>08:00</span></li>
-		  <li><span>08:30</span></li>
-	      <li><span>09:00</span></li>
-	      <li><span>09:30</span></li>
-	      <li><span>10:00</span></li>
-	      <li><span>10:30</span></li>
-	      <li><span>11:00</span></li>
-	      <li><span>11:30</span></li>
-	      <li><span>12:00</span></li>
-	      <li><span>12:30</span></li>
-	      <li><span>13:00</span></li>
-	      <li><span>13:30</span></li>
-	      <li><span>14:00</span></li>
-	      <li><span>14:30</span></li>
-	      <li><span>15:00</span></li>
-	      <li><span>15:30</span></li>
-	      <li><span>16:00</span></li>
-	      <li><span>16:30</span></li>
-	      <li><span>17:00</span></li>
-	      <li><span>17:30</span></li>
-	      <li><span>18:00</span></li>
-	      <li><span>18:30</span></li>
-	      <li><span>19:00</span></li>
-	      <li><span>19:30</span></li>
-	      <li><span>20:00</span></li>
-	    </ul>
-	  </div> <!-- .timeline -->
-
-	  <div class="events">
-	    <ul class="wrap">
-	      <% @week.each do |day, blocks| %>
-	        <li class="events-group">
-	          <div class="top-info"><span><%= day %></span></div>
-	          <ul>
-	            <% blocks.each do |course_block| %>
-	              <li class="single-event" data-start="<%= course_block[0].start_time %>" data-end="<%= course_block[0].end_time %>"  data-content="event-rowing-workout" data-event="event-1">
-	                <a href="#0">
-	                  <em class="event-name"><% course_block[1].title %></em>
-	                </a>
-	              </li>
-	            <%end%>
-	          </ul>
-	        </li>
-	      <%end%>
-	    </ul>
-	  </div>
-
-	  <div class="cover-layer"></div>
-	</div> <!-- .cd-schedule -->
-	<%= link_to 'Back', rooms_path, class:"btn btn-primary" %>
+	<%= render "partials/schedule" %>
 </div>

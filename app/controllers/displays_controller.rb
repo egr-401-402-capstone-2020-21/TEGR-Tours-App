@@ -4,7 +4,7 @@ class DisplaysController < ApplicationController
   # GET /displays
   # GET /displays.json
   def index
-    @displays = Display.all
+    @displays = Display.order("title" => "asc").all
   end
 
   # GET /displays/1

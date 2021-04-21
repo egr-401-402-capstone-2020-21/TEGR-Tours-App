@@ -47,6 +47,8 @@ RailsAdmin.config do |config|
     upload_updates
     download_update_sheet
     download_qr_codes
+    download_qr_code
+    generate_qr_code
   end
 
   config.model 'Room' do

@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.order("name" => "asc").all
   end
 
   # GET /rooms/1
@@ -25,7 +25,7 @@ class RoomsController < ApplicationController
 
     courses.each do |course|
       course.time_blocks.each do |block|
-        @week[block.week_day.downcase.to_sym] << [block, course]
+        @week[block.week_day.downcase.to_sym] << block
       end
     end
 

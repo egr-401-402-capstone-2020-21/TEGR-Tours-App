@@ -113,7 +113,7 @@ module RailsAdmin
 
     def generate_courses(data)
       data.each do |e|
-        course = Course.create(title: e[:title], course_id: e[:course_code], instructor: e[:professor], description: "", room_id: Room.friendly.find(e[:room].downcase.gsub(/ /, "-")).id)
+        course = Course.create(title: e[:title], course_id: "#{e[:course_code]}-#{e[:section]}", instructor: e[:professor], description: "", room_id: Room.friendly.find(e[:room].downcase.gsub(/ /, "-")).id)
         if course.save
           e[:days].each do |day|
             TimeBlock.create(week_day: day, start_time: e[:time][:start], end_time: e[:time][:finish], course_id: course.id)
@@ -172,6 +172,25 @@ module RailsAdmin
 
       zf = ZipFileGenerator.new("#{Rails.root}/app/assets/images/qr_codes", zip_path)
       zf.write()
+    end
+
+    def qr_code(url)
+      qrcode = RQRCode::QRCode.new(url)
+
+      png = qrcode.as_png(
+        bit_depth: 1,
+        border_modules: 4,
+        color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+        color: 'black',
+        file: nil,
+        fill: 'white',
+        module_px_size: 6,
+        resize_exactly_to: false,
+        resize_gte_to: false,
+        size: 120
+      )
+
+      return png
     end
   end
 
@@ -325,13 +344,55 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            #send_file File.join(Rails.root, 'public', 'schedule', 'egr_schedule.xls')
             zip_qr_codes
             send_file File.join(Rails.root, 'public', 'qr_codes.zip')
           end
         end
       end
 
+      class DownloadQrCode < CustomAction
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :visible? do
+          false
+        end
+
+        register_instance_option :show_in_navigation do
+          false
+        end
+
+        register_instance_option :http_methods do
+          [:get]
+        end
+
+        register_instance_option :controller do
+          proc do
+            send_file File.join(Rails.root, 'public', 'qr_code.png')
+          end
+        end
+      end
+
+      class GenerateQrCode < CustomAction
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :visible? do
+          false
+        end
+
+        register_instance_option :show_in_navigation do
+          false
+        end
+
+        register_instance_option :http_methods do
+          [:post]
+        end
+
+        register_instance_option :controller do
+          proc do
+            IO.binwrite(File.join(Rails.root, 'public', 'qr_code.png'), qr_code(params[:URL]).to_s)
+          end
+        end
+      end
     end
   end
 end  

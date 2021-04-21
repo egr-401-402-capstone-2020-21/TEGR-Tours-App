@@ -49,3 +49,11 @@ en:
         title: "Download QR Codes"
         breadcrumb: Download QR Codes"
         menu: "Download QR Codes"
+      download_qr_code:
+        title: "Download QR Code"
+        breadcrumb: Download QR Code"
+        menu: "Download QR Code"
+      generate_qr_code:
+        title: "Generate QR Code"
+        breadcrumb: Generate QR Code"
+        menu: "Generate QR Code"

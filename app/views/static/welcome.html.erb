@@ -3,7 +3,9 @@
 		<div class="jumbotron bg-cover" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url('assets/homepage/maps.jpg')">
 			<div class="container">
 				<div class="row">
-					<%= link_to (image_tag "maps_icon.png", class: "col-md-6 icon-image"), root_path %>
+					<div class="col-md-6 d-flex justify-content-center">
+						<%= link_to (image_tag "maps_icon_cropped.png", class: "icon-image"), map_path %>
+					</div>
 
 					<div class="col-md-6 text-center">
 						<h1 class="display-4">Map</h1>
@@ -25,7 +27,9 @@
 						<p>Sometimes it can be difficult to locate a room or remember specific course times. Just click on a room number and quickly view the relavant information!</p>
 					</div>	
 
-					<%= link_to (image_tag "maps_icon.png", class: "col-md-6 icon-image"), rooms_path %>
+					<div class="col-md-6 d-flex justify-content-center">
+						<%= link_to (image_tag "icons/door.png", class: "icon-image"), rooms_path %>
+					</div>
 				</div>
 	    	</div>
 		</div>
@@ -38,7 +42,9 @@
 		<div class="jumbotron bg-cover" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.75) 100%), url('assets/homepage/display_case.jpg')">
 			<div class="container">
 				<div class="row">
-					<%= link_to (image_tag "maps_icon.png", class: "col-md-6 icon-image"), root_path %>
+					<div class="col-md-6 d-flex justify-content-center">
+						<%= link_to (image_tag "icons/shelving.png", class: "icon-image"), displays_path %>
+					</div>
 
 					<div class="col-md-6 text-center">
 						<h1 class="display-4">Display Cases</h1>
@@ -58,20 +64,14 @@
 				<div class="row">
 					<div class="col-md-6 text-center">
 						<h1 class="display-4">Artifacts</h1>
-						<p>View a floor plan of TEGR and make your life easier in every possible way!</p>
+						<p>Ever wonder what all those random things on the walls mean? We got your answers!</p>
 					</div>		
 
-					<%= link_to (image_tag "maps_icon.png", class: "col-md-6 icon-image"), root_path %>
+					<div class="col-md-6 d-flex justify-content-center">
+						<%= link_to (image_tag "icons/cross.png", class: "icon-image"), artifacts_path %>
+					</div>
 				</div>
 	    	</div>
 		</div>
 	</div>
-</div>
-
-
-<div class="icons">
-	<% link_to (image_tag "maps_icon.png", class: "icon-image"), root_path %>
-	<% link_to (image_tag "door_icon.png", class: "icon-image"), rooms_path %>
-	<% link_to (image_tag "shelf_icon.png", class: "icon-image"), root_path %>
-	<% link_to (image_tag "gem_icon.png", class: "icon-image"), root_path %>
 </div>
