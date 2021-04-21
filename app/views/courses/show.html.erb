@@ -1,32 +1,9 @@
 <div class="container">
-  <p>
-    <strong>Title:</strong>
+  <h1 class="text-center">
     <%= @course.title %>
-  </p>
+  </h1>
 
-  <p>
-    <strong>Course:</strong>
-    <%= @course.course_id %>
-  </p>
-
-  <p>
-    <strong>Instructor:</strong>
-    <%= @course.instructor %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @course.description %>
-  </p>
-
-  <p>
-    <strong>Room:</strong>
-    <%= @course.room %>
-  </p>
-  <p>
-    
-    <%= @week.count %>
-  </p>
+  <p><%= @course.description %></p>
 
   <%= render "partials/schedule" %>
 </div>

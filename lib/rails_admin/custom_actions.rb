@@ -113,7 +113,7 @@ module RailsAdmin
 
     def generate_courses(data)
       data.each do |e|
-        course = Course.create(title: e[:title], course_id: e[:course_code], instructor: e[:professor], description: "", room_id: Room.friendly.find(e[:room].downcase.gsub(/ /, "-")).id)
+        course = Course.create(title: e[:title], course_id: "#{e[:course_code]}-#{e[:section]}", instructor: e[:professor], description: "", room_id: Room.friendly.find(e[:room].downcase.gsub(/ /, "-")).id)
         if course.save
           e[:days].each do |day|
             TimeBlock.create(week_day: day, start_time: e[:time][:start], end_time: e[:time][:finish], course_id: course.id)
