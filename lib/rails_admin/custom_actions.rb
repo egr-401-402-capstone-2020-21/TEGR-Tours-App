@@ -393,6 +393,32 @@ module RailsAdmin
           end
         end
       end
+
+      class DeleteAllRecords < CustomAction
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :visible? do
+          false
+        end
+
+        register_instance_option :show_in_navigation do
+          false
+        end
+
+        register_instance_option :http_methods do
+          [:get]
+        end
+
+        register_instance_option :controller do
+          proc do
+            Display.destroy_all
+            Course.destroy_all
+            Room.destroy_all
+            Artifact.destroy_all
+            redirect_to dashboard_path
+          end
+        end
+      end
     end
   end
 end  

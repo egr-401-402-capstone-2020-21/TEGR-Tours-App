@@ -49,6 +49,7 @@ RailsAdmin.config do |config|
     download_qr_codes
     download_qr_code
     generate_qr_code
+    delete_all_records
   end
 
   config.model 'Room' do

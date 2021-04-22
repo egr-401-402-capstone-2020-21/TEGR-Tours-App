@@ -3,7 +3,7 @@
     <%= @course.title %>
   </h1>
 
-  <p><%= @course.description %></p>
+  <p><%= @course.description.html_safe %></p>
 
   <%= render "partials/schedule" %>
 </div>

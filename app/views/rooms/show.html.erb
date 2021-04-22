@@ -4,7 +4,7 @@
 	</h1>
 
 	<h2><%= @room.title %></h2>
-	<p><%= @room.description %></p>
+	<p><%= @room.description.html_safe %></p>
 
 	<%= render "partials/schedule" %>
 </div>

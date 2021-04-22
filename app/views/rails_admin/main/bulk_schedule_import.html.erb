@@ -1,4 +1,4 @@
-<h1>Bulk Operations</h1>
+<h1>Custom Operations</h1>
 
 <table class="table table-condensed table-striped">
 	<thead>
@@ -76,6 +76,19 @@
 
 				  <%= form.submit "create", class:"btn btn-primary" %>
 				<% end %>
+			</td>
+		</tr>
+
+		<tr class="odd">
+			<td>
+				<span class="show">Delete All Records</span>
+			</td>
+
+			<td>
+				<%= link_to 'Delete All Records', delete_all_records_path, class: "btn btn-danger", data: { confirm: 'Are you sure?'} %>
+			</td>
+
+			<td>
 			</td>
 		</tr>
 	</tbody>
