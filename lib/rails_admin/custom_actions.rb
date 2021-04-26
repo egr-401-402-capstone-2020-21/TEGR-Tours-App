@@ -412,6 +412,7 @@ module RailsAdmin
         register_instance_option :controller do
           proc do
             Display.destroy_all
+            TimeBlock.destroy_all
             Course.destroy_all
             Room.destroy_all
             Artifact.destroy_all
