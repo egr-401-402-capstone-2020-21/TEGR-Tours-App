@@ -170,7 +170,7 @@ module RailsAdmin
 
       File.delete(zip_path) if File.exist?(zip_path)
 
-      zf = ZipFileGenerator.new("#{Rails.root}/app/assets/images/qr_codes", zip_path)
+      zf = ZipFileGenerator.new(Rails.root.join('public', 'qr_codes'), zip_path)
       zf.write()
     end
 

@@ -2,7 +2,7 @@ class ApplicationRecord < ActiveRecord::Base
   	self.abstract_class = true
 	module TegrQR
 		DOMAIN = "http://tegrtours.com"
-		QR_PATH = "#{Rails.root}/app/assets/images/qr_codes"
+		QR_PATH = Rails.root.join('public', 'qr_codes')
 	end
 
 	def save_png(png, record)
