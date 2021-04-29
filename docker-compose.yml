@@ -1,0 +1,28 @@
+version: "3.3"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: tegrkiq
+      POSTGRES_PASSWORD: test_db_password
+    volumes:
+      - tegrkiq-postgres:/var/lib/postgresql/data
+  tegrkiq:
+    build: .
+    links:
+      - postgres
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+  nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    links:
+      - tegrkiq
+    ports:
+      - "80:80"
+
+volumes:
+  tegrkiq-postgres:
